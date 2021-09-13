@@ -1,0 +1,704 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.shopCarLogo{
+    background: rgb(249,249,249);
+}
+.shopCarLogo:hover{
+    color: red;
+    background: white;
+}
+ul li{
+    list-style: none;
+}
+/*头部*/
+.header-content{
+    width: 100%;
+}
+.white-line{
+    color: white;
+}
+.header-top{
+    width: 1000px;
+    margin: auto;
+    height: 50px;
+    overflow: hidden;
+}
+.logo{
+    float: left;
+}
+.shopCar{
+    float: right;
+    height: 50px;
+    line-height: 30px;
+    margin-top: 10px;
+}
+.shopCar a span{
+    float: left;
+}
+.shopCar .icon{
+    margin: auto;
+    width: 25px;
+    height: 25px;
+    background-image: url("../images/iconlist.png");
+    background-size: 100px;
+}
+.shopCar .icon01{
+    background-position: 3px -202px;
+}
+.shopCar a{
+    float: right;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    border: 1px solid #cccccc;
+}
+.header-bottom{
+    width: 100%;
+    min-width: 1000px;
+    background: rgb(87,188,76);
+    height: 40px;
+    margin-top: 20px;
+    line-height: 40px;
+}
+.header-bottom-content{
+    width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+.header-bottom-content-left{
+    float: left;
+}
+.header-bottom-content-left ul li{
+    display: inline-block;
+}
+.header-bottom-content-left li{
+    width: 70px;
+    color: white;
+    text-align: center;
+}
+.header-bottom-content-left li:hover{
+    background: rgb(61,162,50);
+}
+.header-bottom-content-right{
+    float: right;
+}
+.header-bottom-content-right ul li{
+    display: inline-block;
+}
+.header-bottom-content-right a{
+    text-decoration: none;
+    color: white;
+}
+.header-bottom-content-right a:hover{
+    color: black;
+}
+.header-bottom-content-right li{
+    width: 110px;
+    text-align: center;
+    background: #77c558;
+
+}
+/*.header-bottom-content-right li:hover{*/
+/*    background: rgb(61,162,50);*/
+/*}*/
+/*尾部*/
+.bottom-content{
+    width: 100%;
+    background: rgb(238,238,238);
+}
+.bottom-main{
+    width: 1000px;
+    min-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+.bottom-li-content{
+    width: 70%;
+    margin-top: 5px;
+    float: left;
+    color: gray;
+}
+.bottom-li-content ul {
+    display: inline-block;
+    margin-right: 100px;
+}
+.bottom-li-content li{
+    list-style: none;
+    padding-top: 5px;
+    font-size: 11px;
+}
+.bottom-li-content li:hover{
+    cursor: pointer;
+}
+.span-big{
+    font-size: 13px;
+}
+.div span{
+    float: left;
+}
+.div{
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+.div .icon{
+  margin: auto;
+    width: 50px;
+    height: 50px;
+    background-image: url("../images/iconlist.png");
+    background-size: 100px;
+}
+.div .icon02{
+    background-position: 3px -402px;
+}
+.bottom-phone-content{
+    width: 200px;
+
+    float: left;
+    margin-top: 40px;
+}
+.bottom-phone-content p{
+
+}
+.copy{
+    width: 1000px;
+    margin: auto;
+    text-align: center;
+    margin-top: 10px;
+}
+.copy p{
+    font-size: 8px;
+    color: rgb(170,165,178);
+    padding-bottom: 5px;
+}
+/*中间*/
+.main-content{
+    width: 100%;
+}
+.img-content{
+    width: 1000px;
+    margin: auto;
+}
+.img{
+    height: 380px;
+    position: relative;
+}
+.img ul li{
+    position: absolute;
+    list-style: none;
+    opacity: 0;
+    transition: all 0.5s;
+}
+.img img{
+    width: 1000px;
+}
+.img p{
+    position: absolute;left: 0;bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+.img p span{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: darkgrey;
+    cursor: pointer;
+}
+.img li.cur{
+    opacity: 1;
+}
+.img p span.cur{
+    background: rgb(255,153,0);
+}
+/*书籍*/
+.main-book{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.book-content{
+    width: 1000px;
+    margin: auto;
+}
+.news{
+    font-size: 20px;
+    color: darkgray;
+    margin-bottom: 10px;
+}
+.news-line{
+    margin-bottom: 10px;
+}
+.book-box ul{
+    overflow: hidden;
+}
+.book-box ul li{
+    float: left;
+    width: 240px;
+    box-sizing: border-box;
+    margin-top: 50px;
+}
+.book-box ul li img{
+    width: 100%;
+}
+.book-box li:hover{
+    /*box-shadow: 0 5px 5px 5px gray;*/
+    width: 270px;
+    transition: all 1s;
+}
+.book-box  div{
+    text-align: center;
+}
+.book-name{
+    color: black;
+    font-size: 14px;
+}
+.book-price{
+    color: rgb(255,102,0);
+}
+/*注册*/
+.login-content{
+    width: 100%;
+}
+.login-main{
+    height: 500px;
+    width: 1000px;
+    min-width: 1000px;
+    margin: auto;
+}
+.login-box{
+    width: 1000px;
+    margin: auto;
+    border: 1px solid #e0e0e0;
+    /*box-shadow:1px 1px 1px 1px gray ;*/
+    height: 420px;
+    margin-top: 40px;
+}
+.login-header{
+    margin-top: 20px;
+    width: 100%;
+    overflow: hidden;
+}
+.login-header-left{
+    float: left;
+    margin-left: 20px;
+}
+.login-header-left p{
+    color: darkgray;
+    font-size: 18px;
+    font-weight: initial;
+    display: inline-block;
+}
+.login-header-right{
+    float: right;
+    margin-right: 20px;
+}
+.login-header-right a{
+    color: rgb(255,182,73);
+}
+.login-main-content{
+    margin-top: 20px;
+    width: 100%;
+    overflow: hidden;
+}
+.login-main-content-left{
+    width: 55%;
+    float: left;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+.login-main-content-left p{
+    font-size: 15px;
+    margin-top: 10px;
+}
+.login-main-content-left span{
+    float: left;
+    position: absolute;
+
+}
+.login-main-content-left .icon{
+    margin: 10px auto auto;
+    width: 36px;
+    height: 35px;
+    background-color: #f5f5f5;
+    border:1px solid #CDF1C9;
+    background-image: url("../images/iconlist.png");
+    background-size: 100px;
+}
+.login-main-content-left .icon03{
+     background-position: 7px -584px;
+ }
+.login-main-content-left .icon04{
+    background-position: 9px -624px;
+}
+.login-main-content-left input{
+    width: 350px;
+    height: 35px;
+    border: 1px solid #CDF1C9;
+    padding-left: 45px;
+    outline: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.login-main-content-left button{
+    width: 160px;
+    height: 45px;
+    outline: none;
+    border: 0;
+    margin-left: 110px;
+}
+.sub{
+    width: 170px;
+    height: 40px;
+    color: white;
+    padding: 5px;
+    font-size: 14px;
+    background: rgb(114,177,52);
+    margin-top: 30px;
+}
+.login-main-content-right{
+    float: left;
+    margin-right: 50px;
+    margin-top: 30px;
+    width: 35%;
+}
+.login-logo{
+    margin-left: 100px;
+    margin-bottom: 60px;
+}
+.sin-content{
+    width: 100%;
+}
+.sin-main{
+    width: 1000px;
+    height: 500px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+}
+.sin-main p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: rgb(255,182,73);
+    font-size: 18px;
+}
+.sin-box{
+    width: 600px;
+    margin: auto;
+}
+/*验证登录格式*/
+#ac1,#ac2,#ac3,#ac4{
+     font-size: 11px;
+     color: red;
+     text-align: left;
+     padding-top: 20px;
+     display: none;
+ }
+
+
+.sin-box table{
+    margin-left: 120px;
+}
+.sin-box table tr>td{
+    text-align: right;
+}
+.sin-box  input{
+    width: 200px;
+    height: 30px;
+    padding-left: 10px;
+    margin-top: 20px;
+    border: 1px solid #cccccc;
+    outline: none;
+}
+.sin-box .rad{
+    width: 10px;
+    height: 10px;
+}
+.rad{
+    font-size: 11px;
+}
+.sub{
+    margin-top: 20px;
+    background: rgb(114,177,52);
+}
+/*商品页*/
+.main-car{
+    width: 100%;
+}
+.car{
+    width: 1000px;
+    height: 600px;
+    margin: auto;
+}
+.car .p{
+    color: gray;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.car .list{
+    width: 1000px;
+    height: 35px;
+    background: #eeeeee;
+    border: 1px solid gainsboro;
+    margin-top: 25px;
+}
+
+.car .list p{
+    height: 35px;
+    line-height: 35px;
+    display: inline-block;
+    font-size: 14px;
+    float: left;
+}
+.car .list .p1{
+    margin-left: 200px;
+}
+.car .list .p2{
+    margin-left: 120px;
+}
+
+.car .list .p3{
+    margin-left: 80px;
+}
+.car .list1{
+    width: 1000px;
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    font-size: 20px;
+    border-left: 1px solid gainsboro;
+    border-right: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+}
+.list1 img{
+    height: 80px;
+    margin-top: 10px;
+}
+.list1 p{
+    margin-left: 50px;
+    line-height: 100px;
+    height: 35px;
+    display: inline-block;
+    font-size: 14px;
+    float: left;
+}
+.list1 .p1{
+    margin-left: 140px;
+}
+.list1 .p2{
+    margin-left: 130px;
+}
+.list1 .p3{
+    margin-left: 80px;
+}
+.car .list1 a{
+    text-decoration: none;
+    color: #ff6e15;
+}
+.car .list2{
+    width: 1000px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 14px;
+}
+.car .list2 p{
+    display: inline-block;
+}
+.car .list2 button{
+    width: 100px;
+    height: 35px;
+    border: 0;
+    background: #ff6633;
+    font-size: 16px;
+    color: white;
+    outline:none;
+}
+.downHeader{
+    width: 100%;
+}
+.shopTitle{
+    width: 1000px;
+    margin: auto;
+}
+.shopTitle p{
+    font-size: 14px;
+    color: gray;
+}
+.shopClass{
+    width: 100%;
+    margin-top: 30px;
+}
+.shopClassTitle{
+    width: 980px;
+    line-height: 60px;
+    background: rgb(245,245,245);
+    height: 60px;
+    margin: auto;
+    padding-left: 20px;
+}
+.shopClassTitle span{
+    font-size: 14px;
+}
+.active{
+    background: rgb(87,188,76);
+    padding-left: 18px;
+    color: white;
+    padding-right: 18px;
+}
+.shopClassTitle>span:nth-last-child(-n+4){
+    margin-left: 30px;
+}
+.dowTitle{
+    width: 100%;
+    margin-top: 30px;
+}
+.downTitle-box{
+    width: 1000px;
+    border-top: 2px solid rgb(178,238,134);
+    border-bottom: 1px solid #cccccc;
+    margin: auto;
+    height: 40px;
+    line-height: 40px;
+}
+.downTitle-box h6 {
+    display: inline;
+}
+.red{
+    color: red;
+}
+.shopImg{
+    width: 100%;
+}
+.shopImg-box{
+    width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.userinfo{
+    font-size: 11px;
+    color: white;
+}
+.shopImg-box li{
+    width: 25%;
+    float: left;
+}
+.shopbookPrice{
+    color: rgb(255,102,0);
+}
+.shopbookF{
+    font-size: 11px;
+    color: gray;
+}
+.shopbookName{
+    font-size: 14px;
+}
+.CutIndex{
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.CutIndex-box{
+    width: 1000px;
+    margin: auto;
+    text-align: center;
+    font-size: 11px;
+}
+.CutIndex-box a{
+    color: gray;
+    border: 1px solid #cccccc;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.CutIndex-box  ul li {
+	display: inline;
+}
+.active-a{
+    background: rgb(168,216,133);
+    color: white;
+}
+.shopMain{
+    width: 100%;
+    margin-top: 30px;
+}
+.shopMain-box{
+    width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+.shopMain-box-left{
+    float: left;
+    border: 1px solid rgb(225,225,225);
+}
+.shopMain-box-left img{
+    height: 300px;
+}
+.shopMain-box-right{
+    float: left;
+    margin-left: 100px;
+}
+.bookName{
+    font-size: 26px;
+    color: black;
+    font-weight: 100;
+}
+.bookcontent{
+    color: gray;
+}
+.bookconten2{
+    color: gray;
+}
+.bookbox{
+    margin-top: 20px;
+    width: 350px;
+    height: 100px;
+    background: rgb(245,245,245);
+}
+.len{
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 14px;
+    color: rgb(154,154,154);
+}
+.bootomshopMain{
+    margin-top: 40px;
+}
+.classprice{
+    color: rgb(255,102,0);
+}
+.classshopcar{
+    margin-top: 10px;
+    border: 0px;
+    height: 30px;
+    width: 150px;
+    color: white;
+    background: rgb(255,153,0);
+    cursor: pointer;
+}
+.shopContent{
+    width: 100%;
+}
+.shopContent-box{
+    text-align: center;
+    width: 1000px;
+    margin: auto;
+}
+.range{
+    margin-top: 30px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.range-box{
+    width: 1000px;
+    margin: auto;
+}

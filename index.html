@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="Js/jquery-1.11.3.js"></script>
+<link rel="stylesheet" href="Css/index.css">
+<body>
+    <div id="header"></div>
+    <div class="main-content">
+        <div class="img-content">
+            <div class="img" id="box">
+                <ul>
+                    <li class="cur"><img src="images/banner01.jpg" alt=""></li>
+                    <li><img src="images/banner02.jpg" alt=""></li>
+                    <li><img src="images/banner03.jpg" alt=""></li>
+                    <li><img src="images/banner04.jpg" alt=""></li>
+                </ul>
+                <p>
+                    <span class="cur" title="0"></span>
+                    <span title="1"></span>
+                    <span title="2"></span>
+                    <span title="3"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+<!--    书籍部分-->
+    <div class="main-book">
+        <div class="book-content">
+            <p class="news">最新商品</p>
+            <hr class="news-line">
+            <div class="book-box">
+                <ul>
+                    <li><div>
+                        <img src="img-product/04.jpg" alt="">
+                    </div>
+                    <p class="book-name">JavaScript高级教程12</p>
+                        <p><span></span><span class="book-price">￥99.00</span></p>
+                    </li>
+                    <li><div>
+                        <img src="img-product/03.jpg" alt="">
+                    </div>
+                        <p class="book-name">JavaScript高级教程12</p>
+                        <p><span></span><span class="book-price">￥99.00</span></p>
+                    </li>
+                    <li><div>
+                        <img src="img-product/02.jpg" alt="">
+                    </div>
+                        <p class="book-name">JavaScript高级教程12</p>
+                        <p><span></span><span class="book-price">￥99.00</span></p>
+                    </li>
+                    <li><div>
+                        <img src="img-product/01.jpg" alt="">
+                    </div>
+                        <p class="book-name">JavaScript高级教程12</p>
+                        <p><span></span><span class="book-price">￥99.00</span></p>
+                    </li>
+                </ul>
+                <ul style="margin-top: 10px;">
+                    <li><div>
+                        <img src="img-product/08.jpg" alt="">
+                    </div>
+                        <p class="book-name">JavaScript高级教程12</p>
+                        <p><span></span><span class="book-price">￥99.00</span></p>
+                    </li>
+                    <li><div>
+                        <img src="img-product/07.jpg" alt="">
+                    </div>
+                        <p class="book-name">JavaScript高级教程12</p>
+                        <p><span></span><span class="book-price">￥99.00</span></p>
+                    </li>
+                    <li><div>
+                        <img src="img-product/06.jpg" alt="">
+                    </div>
+                        <p class="book-name">JavaScript高级教程12</p>
+                        <p><span></span><span class="book-price">￥99.00</span></p>
+                    </li>
+                    <li><div>
+                        <img src="img-product/05.jpg" alt="">
+                    </div>
+                        <p class="book-name">JavaScript高级教程12</p>
+                        <p><span></span><span class="book-price">￥99.00</span></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+</body>
+<script src="Js/main.js">
+	
+</script>
+<script>
+	function getIndexinfo(){
+		$.get('PHP/getImg.php',function(data){
+			console.log(data);
+			var imgs=document.querySelectorAll(".book-box img");
+			var imgNames=document.querySelectorAll(".book-name");
+			var imgPrice=document.querySelectorAll(".book-price");
+            for(var i=0;i<imgs.length;i++){
+                imgs[i].title=data[i].pid;
+            }
+			for(var i=0;i<imgs.length;i++){
+				imgs[i].src=data[i].pic;
+			}
+			for(var i=0;i<imgs.length;i++){
+				imgNames[i].innerHTML=data[i].title;
+			}
+			for(var i=0;i<imgPrice.length;i++){
+				imgPrice[i].innerHTML=data[i].price;
+			}
+		})
+	}
+	function headerAndfooter() {
+	  $("#header").load("header.html");
+	  $("#footer").load("footer.html");
+	}
+	headerAndfooter();
+	function imgCut() {
+	  let i=1;
+	  let box=document.getElementById("box");
+	  let lis=box.getElementsByTagName("li");
+	  let spans=box.getElementsByTagName("span");
+	  let len=lis.length;
+	  let timer=setInterval(task,3000);
+	  function task() {
+	    if (i<len-1){
+	      lis[i].className="";
+	      spans[i].className=""
+	      i++;
+	      lis[i].className="cur";
+	      spans[i].className="cur"
+	    }else{
+	      lis[i].className="";
+	      spans[i].className=""
+	      i=0;
+	      lis[i].className="cur";
+	      spans[i].className="cur";
+	    }
+	  }
+	  box.onmouseover=function () {
+	    clearInterval(timer)
+	  }
+	  box.onmouseout=function () {
+	    timer=setInterval(task,3000)
+	  }
+	  for (let y=0;y<spans.length;y++){
+	    spans[i].onmouseover=function () {
+	       let c= parseInt(this.title);
+	       if (i!=c){
+	         lis[i].className="";
+	         spans[i].className="";
+	         i=c;
+	         lis[i].className="cur";
+	         spans[i].className="cur";
+	       }
+	    }
+	  }
+	}
+	imgCut()
+	getIndexinfo();
+    function shopInfo(){
+        var imgs=document.querySelectorAll(".book-box img");
+        for(var i=0;i<imgs.length;i++){
+            imgs[i].addEventListener("click",function(evetn){
+                var url='shopContent.html?id='+this.title;
+                window.location=url;               
+            })
+        }
+    }
+    shopInfo();
+</script>
+</html>

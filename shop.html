@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Js/jquery-1.11.3.js"></script>
+    <link rel="stylesheet" href="Css/index.css">
+</head>
+<style type="text/css">
+	.CutIndex-box ul li{
+		display: inline;
+	}
+</style>
+<body>
+<div id="header"></div>
+<div class="downHeader">
+    <div class="shopTitle">
+        <p>首页>全部商品</p>
+    </div>
+</div>
+<div class="shopClass">
+    <div class="shopClassTitle">
+        <span>商品分类:</span>
+        <span class="active cut" data-index="4">不限</span>
+        <span class="cut" data-index="1">IT/互联网</span>
+        <span class="cut" data-index="2">小说</span>
+        <span class="cut" data-index="3">经典名著</span>
+    </div>
+</div>
+<div class="dowTitle">
+    <div class="downTitle-box">
+        <h6>共找到</h6><b class="red" id="shops">12</b><h6>件匹配商品</h6>
+    </div>
+</div>
+<div class="shopImg">
+    <div class="shopImg-box">
+        <ul id="sss">
+            <li><div>
+                <img src="img-product/04.jpg" alt="" class="getShopImg">
+            </div>
+                <p class="shopbookName">1高级教程12</p>
+                <p class="shopbookF">1</p>
+                <p class="shopbookPrice">￥99.00</p>
+            </li>
+            <li><div>
+                <img src="img-product/03.jpg" alt="" class="getShopImg">
+            </div>
+                <p class="shopbookName">1高级教程11</p>
+                <p class="shopbookF">1</p>
+                <p class="shopbookPrice">￥99.00</p>
+            </li>
+            <li><div>
+                <img src="img-product/02.jpg" alt="" class="getShopImg">
+            </div>
+                <p class="shopbookName">1高级教程10</p>
+                <p class="shopbookF">1</p>
+                <p class="shopbookPrice">￥99.00</p>
+            </li>
+            <li><div>
+                <img src="img-product/01.jpg" alt="" class="getShopImg">
+            </div>
+                <p class="shopbookName">1高级教程9</p>
+                <p class="shopbookF">1</p>
+                <p class="shopbookPrice">￥99.00</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="CutIndex">
+    <div class="CutIndex-box">
+		<ul>
+			<li id="lastIndex"><a href="shop.html">上一页</a></li>
+			<li id="getLi"></li>
+			<li id="nextIndex"><a href="shop.html">下一页</a></li>
+		</ul>
+    </div>
+</div>
+<div id="footer"></div>
+<script>
+	function headerAndfooter() {
+	  $("#header").load("header.html");
+	  $("#footer").load("footer.html");
+	}
+    headerAndfooter();
+	//分页
+	document.getElementById("lastIndex").addEventListener("click",function(event){
+		event.preventDefault();
+		$.get('PHP/getImg.php',function(data){
+			cutInfo(data);
+		})
+	})
+	document.getElementById("nextIndex").addEventListener("click",function(event){
+		event.preventDefault();
+		$.get('PHP/getImg.php',function(data){
+			cutInfo(data);
+		})
+	})
+
+	function Paging(){
+		$.get('PHP/Paging.php',function(data){
+			cutInfo(data)
+			//总页数码
+			var pageSize=data[4][0];
+			// console.log(pageSize);//3
+			var htmlStr="";
+			for(var i=1;i<=pageSize;i++){
+				htmlStr+=`<span><a href="shop.html">${i}</a></span>`
+			}
+			// console.log(htmlStr);
+			var getLi=document.getElementById("getLi");
+            $("#getLi").html(htmlStr);
+			
+        })
+	}
+	var getLi=document.getElementById("getLi");
+	getLi.addEventListener("click",function(event){
+		event.preventDefault();
+		acan= parseInt(event.target.innerHTML)
+		// console.log(acan)
+		$.get('PHP/Paging.php',{"page":acan},function(data){
+			console.log(data);
+			cutInfo(data);
+		})
+	})
+	Paging();
+	//渲染分页和初始数据
+	function cutInfo(data){
+
+		var bookName=document.querySelectorAll(".shopbookName");
+			let uls=document.getElementById("sss");
+			var str="";
+			for(var i=0;i<4;i++){
+				str+=`
+				<li><div>
+                <img src="${data[i].pic}" alt="" class="getShopImg">
+            </div>
+                <p class="shopbookName">${data[i].title}</p>
+                <p class="shopbookF">${data[i].pubhouse}</p>
+                <p class="shopbookPrice">${data[i].price}</p>
+            </li>
+				`
+			
+			}
+			$("#sss").html(str);
+	}
+
+	//按图书类别切换图书
+	function cutClass(){
+		var spans=document.getElementsByClassName("cut");
+		console.log(spans);
+		for(var i=0;i<spans.length;i++){
+			spans[i].addEventListener("click",function(event){
+				if(event.target.dataset.index=="1"){
+					$.get('PHP/cutIndex.php',{"data":1},function(data){
+						console.log(data);
+						document.getElementById("shops").innerHTML=4;
+						cutInfo(data)
+					})
+				}else if(event.target.dataset.index=="2"){
+					$.get('PHP/cutIndex.php',{"data":2},function(data){
+						console.log(data);
+						cutInfo(data)
+						document.getElementById("shops").innerHTML=4;
+					})
+				}else if(event.target.dataset.index=="3"){
+					$.get('PHP/cutIndex.php',{"data":3},function(data){
+						console.log(data);
+						cutInfo(data)
+						document.getElementById("shops").innerHTML=4;
+					})
+				}else{
+					document.getElementById("shops").innerHTML=12;
+				}
+			})
+		}
+	}
+	cutClass();
+</script>
+</body>
+</html>

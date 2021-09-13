@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Js/jquery-1.11.3.js"></script>
+    <script src="Js/main.js"></script>
+    <link rel="stylesheet" href="Css/index.css">
+</head>
+<body>
+<div id="header"></div>
+<div class="main-car">
+    <div class="car">
+        <p class="p">首页 > 我的购物车</p>
+        <div class="list">
+            <p class="" style="margin-left: 20px">
+                <input type="checkbox" id="quanX" value=""> 全选</p>
+            <p class="p1">课程信息</p>
+            <p class="p1">单价</p>
+            <p class="p2">数量</p>
+            <p class="p2">金额</p>
+            <p class="p3">操作</p>
+        </div>
+        
+        <div class="list1" id="lis1">
+            请登录后查看您的购物车 <a href="login.html">去登录</a>
+        </div>
+        <div class="list1" id="lis2" style="display: none;">
+            <p class="" style="margin-left: 20px">
+                <input type="checkbox" id="" value=""> </p>
+            <p><img src="img-product/01.jpg" alt=""></p>
+            <p class="">JavaScript高级程序设计11</p>
+            <p class="p1">￥99</p>
+            <p class="p2">2</p>
+            <p class="p2">￥198</p>
+            <p class="p3">X</p>
+        </div>
+        <div class="list2">
+            <p style="margin-left: 715px;">商品总数<span style="color: #ff6e15">0</span>件</p>
+            <p style="font-size: 15px;">总金额：<b style="color: #ff6e15;font-size: 18px;">0.00</b></p>
+            <button type="submit">结算</button>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+<script>
+	function headerAndfooter() {
+	  $("#header").load("header.html");
+	  $("#footer").load("footer.html");
+	}
+    headerAndfooter()
+    function checkInfo(){
+        let lis1=document.getElementById("lis1");
+        let lis2=document.getElementById("lis2");
+        if(localStorage.getItem("uid")){
+            lis2.style.display="block";
+            lis1.style.display="none";
+        }else{
+            lis2.style.display="none";
+            lis1.style.display="block";
+        }
+    }
+    checkInfo()
+</script>
+</body>
+</html>

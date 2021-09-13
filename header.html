@@ -1,0 +1,45 @@
+<div class="header-content">
+    <div class="header-top">
+        <div class="logo">
+            <img src="images/logo.png" alt="">
+        </div>
+        <div class="shopCar">
+            <a href="shopCar.html" class="shopCarLogo"><span class="icon icon01"></span> 我的购物车</a>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="header-bottom-content">
+            <div class="header-bottom-content-left">
+                <ul>
+                    <li style="background: rgb(61,162,60),font-size=11px"><a href="index.html">首页</a></li>
+                    <li><a href="shop.html">全部商品</a></li>
+                </ul>
+            </div>
+            <div class="header-bottom-content-right">
+                <ul>
+                    <li id="user">
+                        <a href="login.html" class="as">登录</a><span class="white-line">|</span>
+                        <a href="signIn.html" class="as">注册</a>
+                    </li>
+                    <li id="userinto" style="display: none;" class="userinfo" id="userinfo">
+                        <a href="" style="display: none;" id="info">个人中心</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function userInfo(){
+        let user=document.getElementById("user");
+        let userinto=document.getElementById("userinto");
+        if(localStorage.getItem('uid')){
+            userinto.style.display="block";
+            user.style.display="none"
+            userinto.innerHTML=localStorage.getItem("uid");
+        }else{
+            userinto.style.display="none";
+        }
+    }
+    userInfo();
+</script>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Js/jquery-1.11.3.js"></script>
+    <script src="Js/main.js"></script>
+    <link rel="stylesheet" href="Css/index.css">
+</head>
+<body>
+<div id="header"></div>
+<div class="downHeader">
+    <div class="shopTitle">
+        <p>首页>全部商品</p>
+    </div>
+</div>
+<div class="shopMain">
+    <div class="shopMain-box">
+        <div class="shopMain-box-left">
+            <img src="img-product/03.jpg" alt="" id="shopImg">
+        </div>
+        <div class="shopMain-box-right">
+            <p class="bookName" id="bookName">JavaScript高级教程11</p>
+            <p class="bookcontent">前端开发经典图书JavaScript技术名著web前端开发国内js第一书</p>
+            <p class="bookconten2">掌握Javascript编程艺术</p>
+            <div class="bookbox">
+                <p class="len">作者: [美] Nicholas C.Zakas著;李松峰，曹力译</p>
+                <p class="len">出版社:人民邮电出版社</p>
+                <p class="len">出版时间: 2012年3月</p>
+            </div>
+            <div class="bootomshopMain">
+                <span>课程价格</span><span class="classprice" id="bookPrice">￥ 99 .00</span>
+                <br>
+                <input type="submit" value="加入购物车" class="classshopcar">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="range">
+    <div class="range-box">
+        <p>商品详情</p>
+        <hr>
+    </div>
+</div>
+<div class="shopContent">
+   <div class="shopContent-box" id="shopContent">
+       
+   </div>
+</div>
+<div id="footer"></div>
+<script>
+    function headerAndfooter() {
+	  $("#header").load("header.html");
+	  $("#footer").load("footer.html");
+	}
+    headerAndfooter();
+    function getInfo(){
+        var id=location.search;
+        var strid=id.substr(id.length-1,1)
+        console.log(strid);
+        $.get('PHP/shopInfo.php',{"id":strid},function(data){
+            console.log(data);
+            document.getElementById("bookName").innerHTML=data[0].title;
+            document.getElementById("bookPrice").innerHTML=data[0].price;
+            document.getElementById("shopImg").src=data[0].pic;
+            var shopContent=document.getElementById("shopContent");
+            shopContent.innerHTML=data[0].details
+        })
+    }
+    getInfo();
+</script>
+</body>
+</html>

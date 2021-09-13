@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="Js/jquery-1.11.3.js"></script>
+<link rel="stylesheet" href="Css/index.css">
+<body>
+<div id="header"></div>
+<div class="sin-content">
+    <div class="sin-main">
+        <p>新用户注册</p>
+        <div class="sin-box">
+            <hr style="border: 1px solid #e0e0e0">
+                <table>
+                    <tr>
+                        <td style="padding-top: 20px">邮箱:</td>
+                        <td ><input type="email" placeholder="请输入邮箱名" id="Iemail"></td>
+                        <td id="ac1">X请输入正确的邮箱格式</td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top: 20px">手机号:</td>
+                        <td><input type="text" placeholder="请输入手机号" id="Iphone"></td>
+                        <td id="ac2">X请输入正确的手机号格式</td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top: 20px">密码:</td>
+                        <td><input type="password" placeholder="请输入密码" id="Ipwd"></td>
+                        <td id="ac3">X密码必须为6~12位的数字大小写字母组合</td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top: 20px">确认密码:</td>
+                        <td><input type="password" placeholder="请确认密码" id="Ipwds"></td>
+                        <td id="ac4">X两次密码不一致</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align: left;">
+                            <input type="checkbox" id="che" class="rad" onclick="if (this.checked) {enable()} else {disable()}"><span class="rad">我已阅读并同意注册协议</span>
+                        </td>
+                    </tr>
+                </table>
+                <input style="width: 200px;" type="button" value="提交注册" class="sub" id="sub" disabled="true">
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+<script src="Js/main.js"></script>
+<script>
+	function headerAndfooter() {
+		  $("#header").load("header.html");
+		  $("#footer").load("footer.html");
+		}
+    headerAndfooter();
+    function disable()
+    {
+        document.getElementById("sub").disabled=true
+    }
+    function enable()
+    {
+        document.getElementById("sub").disabled=false
+    }
+    function forEmail() {
+        let ac1=document.getElementById("ac1");
+        let email=document.getElementById("Iemail");
+        let reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        email.addEventListener("blur",function () {
+            let emailValue=email.value;
+            if (reg.test(emailValue)){
+                ac1.style.display="block";
+                ac1.style.color="green"
+                ac1.innerHTML="邮箱格式正确"
+            }else{
+                ac1.style.display="block"
+            }
+        })
+        email.addEventListener("focus",function () {
+            ac1.style.display="none"
+        })
+    }
+    forEmail()
+    function forPhone() {
+        let ac2=document.getElementById("ac2");
+        let phone=document.getElementById("Iphone");
+        let reg=/^1\d{10}$/
+        phone.addEventListener("blur",function () {
+            let phoneValue=phone.value;
+            if (reg.test(phoneValue)){
+                ac2.style.display="block";
+                ac2.style.color="green"
+                ac2.innerHTML="手机号格式正确"
+            }else{
+                ac2.style.display="block"
+            }
+        })
+        phone.addEventListener("focus",function () {
+            ac2.style.display="none";
+        })
+    }
+    forPhone()
+    function psd() {
+        let ac3=document.getElementById("ac3")
+        let psw=document.getElementById("Ipwd");
+        let reg=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{8,16}$/;
+        psw.addEventListener("blur",function () {
+            let pswValue=psw.value;
+            if(reg.test(pswValue)){
+                ac3.style.display="block";
+                ac3.style.color="green";
+                ac3.innerHTML="密码格式正确";
+            }else{
+                ac3.style.display="block";
+            }
+        })
+        psw.addEventListener("focus",function () {
+            ac3.style.display="none";
+        })
+    }
+    psd()
+    function forPsd() {
+        let ac4=document.getElementById("ac4");
+        let pswd=document.getElementById("Ipwds");
+        let psw=document.getElementById("Ipwd");
+        pswd.addEventListener("blur",function () {
+            let psdValue=pswd.value;
+            let pswValue=psw.value;
+            if (psdValue==pswValue){
+                ac4.style.display="block";
+                ac4.style.color="green";
+                ac4.innerHTML="两次密码相同";
+            }else{
+                ac4.style.display="block";
+            }
+        });
+        pswd.addEventListener("focus",function () {
+            ac4.style.display="none";
+        })
+    }
+    forPsd();
+    var sub=document.getElementById("sub");
+    sub.addEventListener("click",function(){
+        var email=document.getElementById("Iemail").value;
+        var phone=document.getElementById("Iphone").value;
+        var pwd=document.getElementById("Ipwd").value;
+        console.log("s");
+        $.get("PHP/userSignin.php",{"email":email,"phone":phone,"pwd":pwd},function(data){
+            if(data==1){
+                alert("注册成功，即将跳转至登录页面");
+                window.location="login.html";
+            }else if(data==2){
+                alert("用户名重复,请重新注册")
+            }else{
+                alert("注册失败");
+            }
+        })
+    })
+</script>
+</body>
+</html>

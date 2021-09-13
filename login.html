@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="Js/jquery-1.11.3.js"></script>
+<script src="Js/main.js"></script>
+<link rel="stylesheet" href="Css/index.css">
+<body>
+<div id="header"></div>
+<div class="login-content">
+    <div class="login-main">
+        <div class="login-box">
+            <div class="login-header">
+                <div class="login-header-left">
+                    <p style="width: 3px;height: 16px;background: #0e932e;"></p><p>用户登录</p>
+                </div>
+                <div class="login-header-right">
+                    <a href="">新用户注册</a>
+                </div>
+            </div>
+            <div class="login-main-content">
+                <div class="login-main-content-left">
+                    <form action="">
+                        <p>用户名:</p>
+                        <span class="icon icon03"></span>
+                        <input type="text"  placeholder="邮箱/手机号" id="phone">
+                        <p>密码:</p>
+                        <span class="icon icon04"></span>
+                        <input type="password"placeholder="密码" id="pwd"><br>
+                        <button type="button" class='sub' id="sub">立即登录</button>
+                    </form>
+                </div>
+                <div class="login-main-content-right">
+                    <img src="images/line.png" alt="">
+                    <img src="images/qrcode.png" alt="" class="login-logo">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+<script>
+	function headerAndfooter() {
+		  $("#header").load("header.html");
+		  $("#footer").load("footer.html");
+		}
+    headerAndfooter();
+    document.getElementById("sub").addEventListener("click",function(){
+        var uid=document.getElementById("phone").value;
+        var pwd=document.getElementById("pwd").value;
+        $.get('PHP/login.php',{"uid":uid,"pwd":pwd},function(data){
+            console.log(typeof data);
+            console.log(parseInt(data));
+            if(parseInt(data)==1){
+                localStorage.setItem("uid",uid);
+                console.log(uid,pwd);
+                localStorage.setItem("upwd",pwd);
+                alert("登录成功,即将跳转至主页面");
+                window.location='index.html';
+            }else if(parseInt(data)==2){
+                alert("用户不存在");
+            }else{
+                alert("登录失败")
+            }
+        })
+    })
+</script>
+</body>
+</html>
